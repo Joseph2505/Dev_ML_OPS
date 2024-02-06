@@ -10,12 +10,17 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+    
     - name: Setup Kaggle API
       env:
         KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
         KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
       run: |
-        pip install -r requirements.txt
+        pip install --upgrade kaggle
         mkdir ~/.kaggle
         echo '{"username":"${KAGGLE_USERNAME}","key":"${KAGGLE_KEY}"}' > ~/.kaggle/kaggle.json
         chmod 600 ~/.kaggle/kaggle.json
@@ -23,10 +28,7 @@ jobs:
     - name: Download Dataset
       run: |
         mkdir -p data
-        kaggle datasets download -d mmmarchetti/transfusion-dataset -p data --unzip --file transfusion.data
-
-    - name: Unzip Dataset
-      run: |
+        kaggle datasets download -d mmmarchetti/transfusion-dataset -p data
         unzip data/*.zip -d data
 
     - name: Push Data to Repository
@@ -35,5 +37,5 @@ jobs:
         add: 'data/*'
         message: 'Add Kaggle dataset'
       env:
-        GITHUB_TOKEN: ${{ secrets.GT_TOKEN}}
+        GITHUB_TOKEN: ${{ secrets.GT_TOKEN }}
 
