@@ -19,6 +19,7 @@ jobs:
         mkdir ~/.kaggle
         echo '{"username":"${KAGGLE_USERNAME}","key":"${KAGGLE_KEY}"}' > ~/.kaggle/kaggle.json
         chmod 600 ~/.kaggle/kaggle.json
+
     - name: Update Kaggle CLI
         run: pip install --upgrade kaggle
     - name: Download Dataset
