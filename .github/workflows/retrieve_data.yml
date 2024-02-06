@@ -39,11 +39,13 @@ jobs:
     - name: Run pytest
       run: |
         pytest source/unit_test.py
-
-    - name: Commit and push changes
+    - name: Set local Git identity
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+
+    - name: Commit and push changes
+      run: |
         git add dataset/*
         if git diff --staged --quiet; then
           echo "No changes in the dataset, skipping commit and push."
