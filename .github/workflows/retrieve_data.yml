@@ -21,6 +21,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+
     - name: Download dataset
       env:
         KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
@@ -33,9 +34,12 @@ jobs:
         mkdir dataset
         kaggle datasets download -d mmmarchetti/transfusion-dataset -p dataset
         unzip dataset/transfusion-dataset.zip -d dataset
+        rm dataset/transfusion-dataset.zip
+
     - name: Run pytest
       run: |
         pytest source/unit_test.py
+
     - name: Commit and push changes
       run: |
         git config --local user.email "action@github.com"
