@@ -1,0 +1,30 @@
+name: Download Kaggle Dataset and Push to Dev
+
+on:
+  push:
+    branches:
+      - feature_retrieve_data
+
+permissions:
+  contents: write
+
+jobs:
+  download_dataset:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run pytest
+    run: |
+        pytest source/unit_test.py
+
+    - name: Checkout dev branch
+    if: success()
+    uses: actions/checkout@v2
+    with:
+        ref: 'dev'
+        token: ${{ secrets.GT_TOKEN }}
+
+    - name: Merge feature branch into dev
+    if: success()
+    run: |
+        git merge --no-ff ${{ github.ref }} -m "Merge feature_retrieve_data into dev"
+        git push origin dev
