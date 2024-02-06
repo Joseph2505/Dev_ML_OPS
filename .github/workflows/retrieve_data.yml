@@ -63,6 +63,9 @@ jobs:
         with:
           token: ${{ secrets.GT_TOKEN }}
 
+      - name: Fetch the latest state of remote repository
+        run: git fetch origin
+
       - name: Merge feature branch into dev
         run: |
           git checkout feature_retrieve_data
