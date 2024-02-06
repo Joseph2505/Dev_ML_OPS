@@ -42,4 +42,3 @@ jobs:
         git config --local user.name "GitHub Action"
         git add dataset/*
         git commit -a -m "Add dataset" --allow-empty
-        git push
