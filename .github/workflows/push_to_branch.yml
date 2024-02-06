@@ -1,10 +1,10 @@
 name: Download Kaggle Dataset and Push to Dev
 
 on:
-workflow_run:
+  workflow_run:
     workflows: ["Download Kaggle Dataset"]
     types:
-        - completed
+      - completed
 
 permissions:
   contents: write
@@ -14,18 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Run pytest
-    run: |
-        pytest source/unit_test.py
+      run: pytest source/unit_test.py
 
     - name: Checkout dev branch
-    if: success()
-    uses: actions/checkout@v2
-    with:
+      if: success()
+      uses: actions/checkout@v2
+      with:
         ref: 'dev'
         token: ${{ secrets.GT_TOKEN }}
 
     - name: Merge feature branch into dev
-    if: success()
-    run: |
-        git merge --no-ff ${{ github.ref }} -m "Merge feature_retrieve_data into dev"
+      if: success()
+      run: |
+        git merge --no-ff ${{ github.event.workflow_run.head_branch }} -m "Merge feature_retrieve_data into dev"
         git push origin dev
