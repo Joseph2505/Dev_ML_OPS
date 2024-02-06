@@ -1,6 +1,9 @@
 name: Download Kaggle Dataset
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 permissions:
   contents: write
 jobs:
@@ -53,23 +56,3 @@ jobs:
           git commit -m "Add dataset"
           git push
         fi
-
-  merge_to_dev:
-    runs-on: ubuntu-latest
-    needs: download_dataset
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GT_TOKEN }}
-
-      - name: Fetch the latest state of remote repository
-        run: git fetch origin
-
-      - name: Merge feature branch into dev
-        run: |
-          git checkout feature_retrieve_data
-          git pull origin feature_retrieve_data
-          git checkout dev
-          git merge feature_retrieve_data --allow-unrelated-histories
-          git push origin dev
