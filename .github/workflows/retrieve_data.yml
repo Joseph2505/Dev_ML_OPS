@@ -58,14 +58,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: download_dataset
     steps:
-      - name: Checkout dev branch
-        uses: actions/checkout@v2
-        with:
-          ref: 'dev'
-          token: ${{ secrets.GT_TOKEN }}
-
       - name: Merge feature branch into dev
         run: |
-          git fetch origin feature_retrieve_data
-          git merge --no-ff origin/feature_retrieve_data -m "Merge feature_retrieve_data into dev"
+          git checkout feature_retrieve_data
+          git pull origin feature_retrieve_data
+          git checkout dev
+          git merge feature_retrieve_data
           git push origin dev
