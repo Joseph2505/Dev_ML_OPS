@@ -1,0 +1,39 @@
+name: Download Kaggle Dataset
+
+on: [push]
+
+jobs:
+  download-dataset:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Setup Kaggle API
+      env:
+        KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+        KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+      run: |
+        pip install -r requirements.txt
+        mkdir ~/.kaggle
+        echo '{"username":"${KAGGLE_USERNAME}","key":"${KAGGLE_KEY}"}' > ~/.kaggle/kaggle.json
+        chmod 600 ~/.kaggle/kaggle.json
+
+    - name: Download Dataset
+      run: |
+        mkdir -p data
+        kaggle datasets download -d mmmarchetti/transfusion-dataset -p data
+
+    - name: Unzip Dataset
+      run: |
+        unzip data/*.zip -d data
+
+    - name: Push Data to Repository
+      uses: EndBug/add-and-commit@v7
+      with:
+        add: 'data/*'
+        message: 'Add Kaggle dataset'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GT_TOKEN}}
+
