@@ -71,5 +71,5 @@ jobs:
           git checkout feature_retrieve_data
           git pull origin feature_retrieve_data
           git checkout dev
-          git merge feature_retrieve_data
+          git merge feature_retrieve_data --allow-unrelated-histories
           git push origin dev
