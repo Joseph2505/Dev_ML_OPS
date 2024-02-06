@@ -1,9 +1,10 @@
 name: Download Kaggle Dataset and Push to Dev
 
 on:
-  push:
-    branches:
-      - feature_retrieve_data
+workflow_run:
+    workflows: ["Download Kaggle Dataset"]
+    types:
+        - completed
 
 permissions:
   contents: write
