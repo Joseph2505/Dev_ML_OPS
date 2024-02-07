@@ -6,6 +6,7 @@ on:
       - main
 permissions:
   contents: write
+  
 jobs:
   download_dataset:
     runs-on: ubuntu-latest
