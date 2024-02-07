@@ -5,9 +5,9 @@ name: Python application CI
  
 on:
   push:
-    branches: [ "feature_streamlit" ]
+    branches: [ "streamlit_app" ]
   pull_request:
-    branches: [ "feature_streamlit" ]
+    branches: [ "streamlit_app" ]
 
 permissions:
   contents: read
