@@ -64,7 +64,7 @@ jobs:
       uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{ secrets.GT_TOKEN }}
-        repository: evach28/mlopsproject
+        repository: Joseph2505/Dev-ML_OPS
         event-type: retrieve-data-completed
 
 
@@ -80,4 +80,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: Joseph2505/Dev-ML_OPS:latest
+        tags: evach28/mlopsproject:latest
