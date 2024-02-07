@@ -9,7 +9,7 @@ on:
     #types: [retrieve-data-completed]
 
 jobs:
-  deploy:
+  deploy_the_app_to_docker_hub:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
