@@ -4,7 +4,7 @@ from PIL import Image
 from load_data import load_data
 from train_model import train_model
 from sklearn.metrics import accuracy_score
-
+##BIG Comment AAAAAAAAAAAAAA
 image = Image.open('../../assets/donate.jpeg')
 st.image(image,width=700)
 
