@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score
 ##BIG Comment AAAAAAAAAAAAAA
 image = Image.open('../../assets/donate.jpeg')
 st.image(image,width=700)
-st.markdown("<h1 style='text-align: center; color: #FF3342;'><strong><u>Predict Blood Donation for Future Expectancy</u></strong></h1>", unsafe_allow_html=True)
+
 st.markdown("<h1 style='text-align: center; color: #FF3342;'><strong><u>Predict Blood Donation for Future Expectancy</u></strong></h1>", unsafe_allow_html=True)
 
 st.sidebar.markdown("<h1 style='text-align: center; color:#FF3342 ;'><strong><u>Specify Input Parameters</u></strong></h1>", unsafe_allow_html=True)
