@@ -1,8 +1,12 @@
 name: Deploy to Docker Hub
 
 on:
-  repository_dispatch:
-    types: [retrieve-data-completed]
+    push:
+        branches:
+          - streamlit_app
+          
+  #repository_dispatch:
+    #types: [retrieve-data-completed]
 
 jobs:
   deploy:
