@@ -3,7 +3,7 @@ name: Deploy to Docker Hub
 on:
     # push:
     #     branches:
-    #       - streamlit_app
+    #       - dev
           
   repository_dispatch:
     types: [retrieve-data-completed]
