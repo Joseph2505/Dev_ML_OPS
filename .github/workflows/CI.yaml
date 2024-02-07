@@ -28,6 +28,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     
     - name: Run unit tests
+      working-directory: /home/runner/work/Dev-ML_OPS/Dev-ML_OPS/source/unit_test
       run: | 
         pytest source/unit_test/test_load_data.py
         pytest source/unit_test/test_train_model.py
