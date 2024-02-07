@@ -1,7 +1,7 @@
-import App as st
+import streamlit as st
 import pandas as pd
 from PIL import Image
-from App import load_data
+from load_data import load_data
 from train_model import train_model
 from sklearn.metrics import accuracy_score
 
