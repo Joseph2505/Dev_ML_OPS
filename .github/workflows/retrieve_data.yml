@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - streamlit_app
 permissions:
   contents: write
 jobs:
