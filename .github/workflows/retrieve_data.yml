@@ -64,7 +64,7 @@ jobs:
       uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{ secrets.GT_TOKEN }}
-        repository: your-github-username/your-repo-name
+        repository: evach28/mlopsproject
         event-type: retrieve-data-completed
 
         
