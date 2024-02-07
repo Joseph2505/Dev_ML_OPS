@@ -2,3 +2,5 @@ kaggle==1.5.16
 scikit-learn
 pandas
 pytest
+streamlit
+Pillow
