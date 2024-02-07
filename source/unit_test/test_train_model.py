@@ -1,7 +1,6 @@
 import unittest
 from sklearn.datasets import make_classification
-import streamlit.train_model as tm
-
+from streamlit import train_model as tm
 class TestTrainModel(unittest.TestCase):
     def test_train_model(self):
         X, y = make_classification(n_samples=100, n_features=4, n_classes=2, random_state=24)

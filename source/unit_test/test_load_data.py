@@ -1,7 +1,7 @@
 import unittest
 import pandas as pd
 from io import StringIO
-import streamlit.load_data as ld
+from streamlit import load_data as ld
 class TestDataFunctions(unittest.TestCase):
     
     def test_convert_columns_to_numeric(self):
@@ -14,7 +14,7 @@ class TestDataFunctions(unittest.TestCase):
         self.assertEqual(df_converted['B'][1], 0) 
         
     def test_load_data(self):
-        df_loaded = ldload_data('../../dataset/transfusion.data')
+        df_loaded = ld.load_data('../../dataset/transfusion.data')
         self.assertIn('target', df_loaded.columns)
 
 if __name__ == '__main__':
