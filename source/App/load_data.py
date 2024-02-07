@@ -9,5 +9,5 @@ def load_data(file_path):
 
 def convert_columns_to_numeric(data, columns):
     for col in columns:
-        data[col] = pd.to_numeric(data[col], errors='coerce').fillna(0).astype(int)
+        data[col] = pd.to_numeric(data[col], errors='coerce').fillna(0).astype('int64')
     return data

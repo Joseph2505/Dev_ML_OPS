@@ -1,6 +1,6 @@
 import unittest
 from sklearn.datasets import make_classification
-from streamlit.train_model import train_model
+from train_model import train_model
 
 class TestTrainModel(unittest.TestCase):
     def test_train_model(self):
