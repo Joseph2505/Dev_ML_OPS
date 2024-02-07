@@ -43,5 +43,6 @@ jobs:
 
     - name: Run unit tests
       run: |
+      working-directory: ./source/unit_test
         pytest source/unit_test/test_load_data.py
         pytest source/unit_test/test_train_model.py

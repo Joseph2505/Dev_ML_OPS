@@ -1,6 +1,10 @@
 import unittest
 import pandas as pd
 from io import StringIO
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'streamlit')))
 
 from streamlit.load_data import load_data, convert_columns_to_numeric
 
