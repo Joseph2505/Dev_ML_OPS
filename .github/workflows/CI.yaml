@@ -42,5 +42,6 @@ jobs:
         python-version: "3.10"
 
     - name: Run unit tests
-      run: pytest source/unit_test/test_*.py
-
+      run: | 
+        pytest source/unit_test/test_load_data.py
+        pytest source/unit_test/test_train_model.py
