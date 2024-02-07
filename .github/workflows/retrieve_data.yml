@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+      - streamlit_app  
+      # a enleverrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+      #rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
 permissions:
   contents: write
 jobs:
@@ -56,3 +59,7 @@ jobs:
           git commit -m "Add dataset"
           git push
         fi
+    
+
+      
+        
