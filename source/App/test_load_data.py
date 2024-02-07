@@ -1,7 +1,7 @@
 import unittest
 import pandas as pd
 from io import StringIO
-
+import os
 from load_data import load_data, convert_columns_to_numeric
 
 class TestDataFunctions(unittest.TestCase):
@@ -16,7 +16,8 @@ class TestDataFunctions(unittest.TestCase):
         self.assertEqual(df_converted['B'][1], 0) 
         
     def test_load_data(self):
-        df_loaded = load_data('../../dataset/transfusion.data')
+        filepath = os.path.join(os.getcwd(), '../../dataset', 'transfusion.data')
+        df_loaded = load_data(filepath)
         self.assertIn('target', df_loaded.columns)
 
 if __name__ == '__main__':
