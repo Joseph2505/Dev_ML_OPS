@@ -16,7 +16,7 @@ class TestDataFunctions(unittest.TestCase):
         self.assertEqual(df_converted['B'][1], 0) 
         
     def test_load_data(self):
-        filepath = os.path.join(os.getcwd(), '../../dataset', 'transfusion.data')
+        filepath = os.path.join(os.getcwd(), '..', '..', 'dataset', 'transfusion.data')
         df_loaded = load_data(filepath)
         self.assertIn('target', df_loaded.columns)
 
