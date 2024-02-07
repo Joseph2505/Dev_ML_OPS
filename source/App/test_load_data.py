@@ -1,10 +1,7 @@
 import unittest
 import pandas as pd
 from io import StringIO
-import sys
-import os
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from App import load_data as ld
 
 class TestDataFunctions(unittest.TestCase):
