@@ -42,7 +42,5 @@ jobs:
         python-version: "3.10"
 
     - name: Run unit tests
-      run: |
-      working-directory: ./source/unit_test
-        pytest source/unit_test/test_load_data.py
-        pytest source/unit_test/test_train_model.py
+      run: pytest source/unit_test/test_*.py
+
