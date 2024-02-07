@@ -1,7 +1,6 @@
 kaggle==1.5.16
+scikit-learn
+pandas
 pytest
-streamlit==0.82.0
-pandas==1.2.4
-html5lib==1.0.1
-scikit-learn==0.24.2
-sklearn==0.0
+streamlit
+Pillow
