@@ -2,9 +2,8 @@ name: Python application CD
 ##
 on:
   push:
-    branches: [ "feature_CI_CD" ]
-  pull_request:
-    branches: [ "feature_CI_CD" ]
+    tags:
+      - 'ci-success-*'
 
 permissions:
   contents: read
