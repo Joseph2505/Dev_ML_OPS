@@ -34,6 +34,7 @@ jobs:
       - name: Deploy to production
         run: |
           docker pull evach28/mlopsproject:latest
+          docker ps -a
           if [ $(docker container inspect -f '{{.State.Running}}' mlops_app 2> /dev/null) == "true" ]; then
             echo "Le conteneur existe déjà et est en cours d'exécution. Mise à jour du conteneur..."
             docker container stop mlops_app

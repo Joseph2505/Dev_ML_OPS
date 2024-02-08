@@ -56,7 +56,7 @@ jobs:
             tags: evach28/mlopsproject:latest
 
   tag_on_success:
-    needs: unit_tests
+    needs: deploy_docker_hub
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
