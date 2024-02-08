@@ -4,8 +4,8 @@ FROM python:3.9-slim
 # Set the working directory in the container to /app
 WORKDIR /app
 
-# Add the contents of the source\App directory into the container at /app
-ADD source/App /app
+# Add the current directory contents into the container at /app
+ADD . /app
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --upgrade pip
