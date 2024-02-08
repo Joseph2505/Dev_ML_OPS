@@ -10,6 +10,9 @@ permissions:
   contents: read
 
 jobs:
+  ci:
+    uses: ./.github/workflows/ci.yaml
+    
   deploy_to_production:
     runs-on: ubuntu-latest
     steps:
@@ -39,9 +42,6 @@ jobs:
 
           # Démarrer le conteneur Docker dans l'environnement de production
           docker run -d --name mlops_app -p 8080:8080 evach28/mlopsproject:latest
-
-          # Vérifier le statut du déploiement
-          # Peut-être utiliser des commandes curl, vérifier les journaux, etc.
 
           # Exécuter des tests après le déploiement
           # Cela peut inclure des tests d'intégration, des tests de bout en bout, etc.
