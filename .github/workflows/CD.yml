@@ -2,17 +2,14 @@ name: Python application CD
 ##
 on:
   push:
-    branches: [ "dev" ]
+    branches: [ "feature_CI_CD" ]
   pull_request:
-    branches: [ "dev" ]
+    branches: [ "feature_CI_CD" ]
 
 permissions:
   contents: read
 
 jobs:
-  ci:
-    uses: ./.github/workflows/CI.yaml
-    
   deploy_to_production:
     runs-on: ubuntu-latest
     steps:
@@ -39,12 +36,6 @@ jobs:
         run: |
           # Télécharger la nouvelle version de l'image Docker
           docker pull evach28/mlopsproject:latest
-
           # Démarrer le conteneur Docker dans l'environnement de production
           docker run -d --name mlops_app -p 8080:8080 evach28/mlopsproject:latest
-
-          # Exécuter des tests après le déploiement
-          # Cela peut inclure des tests d'intégration, des tests de bout en bout, etc.
-
-          # Envoyer des notifications sur le succès ou l'échec du déploiement
-          # Cela peut inclure l'envoi d'e-mails, de messages Slack, etc.
+          docker restart mlops_app || true

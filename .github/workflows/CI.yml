@@ -5,6 +5,7 @@ on:
     branches: 
     - staging
     - main
+    - feature_CI_CD
   pull_request:
     branches: [ "staging" ]
 
@@ -30,7 +31,20 @@ jobs:
       run: | 
         pytest source/App/test_load_data.py
         pytest source/App/test_train_model.py
-        
+
+  tag_on_success:
+    needs: unit_tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Tag the successful build
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git tag ci-success-${GITHUB_SHA::8} ${GITHUB_SHA}
+          git push origin ci-success-${GITHUB_SHA::8}
+
   deploy_docker_hub:
      needs: unit_tests
      runs-on: ubuntu-latest
