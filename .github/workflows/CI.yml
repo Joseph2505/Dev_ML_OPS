@@ -54,6 +54,7 @@ jobs:
             context: .
             push: true
             tags: evach28/mlopsproject:latest
+
   tag_on_success:
     needs: unit_tests
     runs-on: ubuntu-latest
