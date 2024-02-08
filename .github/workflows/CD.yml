@@ -33,8 +33,13 @@ jobs:
 
       - name: Deploy to production
         run: |
-          # Télécharger la nouvelle version de l'image Docker
           docker pull evach28/mlopsproject:latest
-          # Démarrer le conteneur Docker dans l'environnement de production
-          docker run -d --name mlops_app -p 8080:8080 evach28/mlopsproject:latest
-          docker restart mlops_app || true
+          if [ $(docker container inspect -f '{{.State.Running}}' mlops_app 2> /dev/null) == "true" ]; then
+            echo "Le conteneur existe déjà et est en cours d'exécution. Mise à jour du conteneur..."
+            docker container stop mlops_app
+            docker container rm mlops_app
+            docker run -d --name mlops_app -p 8080:8080 evach28/mlopsproject:latest
+          else
+            echo "Le conteneur n'existe pas. Démarrage d'un nouveau conteneur..."
+            docker run -d --name mlops_app -p 8080:8080 evach28/mlopsproject:latest
+          fi
